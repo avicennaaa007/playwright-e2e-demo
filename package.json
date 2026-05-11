@@ -1,0 +1,23 @@
+{
+  "name": "playwright-e2e-demo",
+  "version": "1.0.0",
+  "description": "My end-2-end test for test web app written with Playwrite in TS",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/avicennaaa007/playwright-e2e-demo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/avicennaaa007/playwright-e2e-demo/issues"
+  },
+  "homepage": "https://github.com/avicennaaa007/playwright-e2e-demo#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.60.0",
+    "@types/node": "^25.6.2"
+  }
+}
