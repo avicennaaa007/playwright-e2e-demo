@@ -1,13 +1,41 @@
-import { test } from '@playwright/test';
+import { expect, test } from '@playwright/test';
+import { LoginPage } from '../pages/login.page';
 import { users } from '../test-data/users';
 
-test('logs in to the bank app with a valid user', async ({ page }) => {
-  await page.goto('https://demo-bank.vercel.app/');
+test('1. Logs in to the bank app with a valid user', async ({ page }) => {
+  const loginPage = new LoginPage(page);
 
-  const identifierInput = page.getByRole('textbox').first();
-  const passwordInput = page.getByRole('textbox').nth(1);
+  await loginPage.goto();
 
-  await identifierInput.fill(users.validUser.username);
-  await passwordInput.fill(users.validUser.password);
-  await page.getByRole('button', { name: /zaloguj się/i }).click();
+  await loginPage.fillLogin(users.validUser.username);
+  await loginPage.fillPassword(users.validUser.password);
+  await loginPage.loginButton.click();
+});
+
+test('2. Keeps the login button disabled when only login is provided', async ({ page }) => {
+  const loginPage = new LoginPage(page);
+
+  await loginPage.goto();
+
+  await loginPage.fillLogin(users.validUser.username);
+
+  await expect(loginPage.loginButton).toBeDisabled();
+});
+
+test('3. Keeps the login button disabled when only password is provided', async ({ page }) => {
+  const loginPage = new LoginPage(page);
+
+  await loginPage.goto();
+
+  await loginPage.fillPassword(users.validUser.password);
+
+  await expect(loginPage.loginButton).toBeDisabled();
+});
+
+test('4. Keeps the login button disabled when login and password are empty', async ({ page }) => {
+  const loginPage = new LoginPage(page);
+
+  await loginPage.goto();
+
+  await expect(loginPage.loginButton).toBeDisabled();
 });
