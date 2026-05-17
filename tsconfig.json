@@ -2,16 +2,15 @@
   "compilerOptions": {
     "target": "ES2022",
     "module": "node16",
+    "ignoreDeprecations": "6.0",
     "moduleResolution": "node16",
     "strict": true,
-    "types": ["node"]
-  },
-  "include": [
-    "playwright.config.ts",
-    "tests/**/*.ts",
-    "pages/**/*.ts",
-    "fixtures/**/*.ts",
-    "test-data/**/*.ts",
-    "utils/**/*.ts"
-  ]
+    "types": ["node"],
+    "baseUrl": ".",
+    "paths": {
+      "@fixtures/*": ["fixtures/*"],
+      "@pages/*": ["pages/*"],
+      "@test-data/*": ["test-data/*"]
+    }
+  }
 }

@@ -1,6 +1,6 @@
 import { expect, test as base } from '@playwright/test';
-import { LoginPage } from '../pages/login.page';
-import { users } from '../test-data/users';
+import { LoginPage } from '@pages/login.page';
+import { users } from '@test-data/users';
 
 type BankUser = {
   username: string;

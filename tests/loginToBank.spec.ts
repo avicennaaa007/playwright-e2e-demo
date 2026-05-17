@@ -1,6 +1,6 @@
-import { expect, test } from '../fixtures/bank.fixture';
-import { LoginPage } from '../pages/login.page';
-import { users } from '../test-data/users';
+import { expect, test } from '@fixtures/bank.fixture';
+import { LoginPage } from '@pages/login.page';
+import { users } from '@test-data/users';
 
 test('1. Logs in to the bank app with a valid user', async ({ loginToBankApp }) => {
   await loginToBankApp();

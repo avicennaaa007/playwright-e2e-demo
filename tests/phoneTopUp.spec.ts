@@ -1,7 +1,7 @@
 import { type Page } from '@playwright/test';
-import { expect, test, type LoginToBankApp } from '../fixtures/bank.fixture';
-import { MenuPage } from '../pages/menu.page';
-import { users } from '../test-data/users';
+import { expect, test, type LoginToBankApp } from '@fixtures/bank.fixture';
+import { MenuPage } from '@pages/myDesktop.page';
+import { users } from '@test-data/users';
 
 const topUpReceiver = '500 xxx xxx';
 const topUpAmount = '45';
@@ -23,8 +23,8 @@ test('1. Tops up mobile phone - positive scenario', async ({ page, loginToBankAp
   await menuPage.fillTopUpAmount(topUpAmount);
   await menuPage.acceptTopUpAgreement();
   await menuPage.submitPhoneTopUp();
-  await page.getByTestId('close-button').click();
-  await page.getByTestId('logout-button').click();
+  await menuPage.closeConfirmation();
+  await menuPage.logout();
 });
 
 test('2. Shows error when phone number is not selected', async ({ page, loginToBankApp }) => {
